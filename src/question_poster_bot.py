@@ -27,7 +27,7 @@ class QuestionPosterBot:
 
 	def log_in(self):
 		self.reddit = praw.Reddit(
-			"questionbot",
+			"QuestionBot",
 			user_agent="praw:QuestionPoster:1.0.0 (by /u/Zagorath)",
 		)
 
