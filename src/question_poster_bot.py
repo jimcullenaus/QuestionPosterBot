@@ -41,6 +41,7 @@ class QuestionPosterBot:
 
 		for comment in comments:
 			reply = f"From /u/{comment.author}:\n\n{comment.body}"
+			print(f"Repling with: {comment.body[:80]}")
 			destination_post.reply(reply)
 
 	def is_valid_comment(self, comment: str):
