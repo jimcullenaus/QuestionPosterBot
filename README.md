@@ -21,5 +21,6 @@ client_secret=<secret>
 ```
 6. Run the script and provide it with arguments as shown:
 ```python
-python question_poster_bot.py <source-thread-id> <destination-thread-id>
+python question_poster_bot.py <source-thread-id> <destination-thread-id> <username>
 ```
+where `<username>` refers to the username of the user responsible for running the script, for use with the bot's user agent.

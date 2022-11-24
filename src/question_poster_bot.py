@@ -4,6 +4,7 @@ import argparse
 class QuestionPosterBot:
 	source_id: str
 	destination_id: str
+	username: str
 	reddit: praw.Reddit
 
 	def run(self):
@@ -17,18 +18,20 @@ class QuestionPosterBot:
 
 	def get_arguments(self):
 		parser = argparse.ArgumentParser(description="Copy top-level comments from one Reddit thread to another.")
-		parser.add_argument('source', type=str, help="The thread to copy top-level comments from")
-		parser.add_argument('destination', type=str, help="The thread to submit top-level comments to")
+		parser.add_argument('source', type=str, help="The thread to copy top-level comments from.")
+		parser.add_argument('destination', type=str, help="The thread to submit top-level comments to.")
+		parser.add_argument('username', type=str, help="The name of the user responsible for running this, for use in the user agent.")
 
 		args = parser.parse_args()
 
 		self.source_id = args.source
 		self.destination_id = args.destination
+		self.username = args.username
 
 	def log_in(self):
 		self.reddit = praw.Reddit(
 			"QuestionBot",
-			user_agent="praw:QuestionPoster:1.0.0 (by /u/Zagorath)",
+			user_agent=f"praw:QuestionPoster:1.0.0 (by /u/{self.username})",
 		)
 
 	def get_top_comments(self):
